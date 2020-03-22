@@ -8,6 +8,6 @@ namespace PropertyManagement.BLL.Services
 {
     public interface IGratkaOfferApi
     {
-        GratkaOfferDto CreateOffer(House house);
+        GratkaOfferDto CreateOffer(House house, UserDetailsDto ownerDetails, UserDetailsDto sellerDetails);
     }
 }

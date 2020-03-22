@@ -22,10 +22,6 @@ namespace PropertyManagement.BLL.Services
         }
             
 
-          
-        
-
-
         public void Send(GratkaOfferDto offer)
         {
             // here is the code that validates and sends data to gratka portal.
