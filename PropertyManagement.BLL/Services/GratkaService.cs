@@ -8,7 +8,7 @@ namespace PropertyManagement.BLL.Services
 {
     public class GratkaService : IGratkaOfferApi
     {
-        public GratkaOfferDto CreateOffer(House house)
+        public GratkaOfferDto CreateOffer(House house, UserDetailsDto ownerDetails, UserDetailsDto sellerDetails)
         {
             var offer = new GratkaOfferDto();
             offer.City = house.Address.City;
@@ -22,9 +22,10 @@ namespace PropertyManagement.BLL.Services
         }
             
 
-        public void Send(GratkaOfferDto offer)
+        
+        public bool Send(GratkaOfferDto offer)
         {
-            // here is the code that validates and sends data to gratka portal.
+            return true;
         }
     }
 }

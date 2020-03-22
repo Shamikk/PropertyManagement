@@ -45,12 +45,27 @@ namespace PropertyManagement.Console
 
             var propertyService = new PropertyService();
             var property = propertyService.CreateProperty(owner, seller, house, address);
-
             var gradkaService = new GratkaService();
-            var offer = gradkaService.CreateOffer(property);
-            System.Console.WriteLine(offer.City);
+            
+            
 
-            gradkaService.Send(offer);
+            var humanService = new HumanServicec();
+            var sellerDetails = humanService.CreateNewUserDetails(seller, BLL.Dtos.Role.SELLER);
+            var ownerDetails = humanService.CreateNewUserDetails(owner, BLL.Dtos.Role.OWNER);
+
+            var offer = gradkaService.CreateOffer(property, ownerDetails, sellerDetails);
+            var isSent = gradkaService.Send(offer);
+            if(isSent == true)
+            {
+                System.Console.WriteLine("We are send the offer");
+            } else
+            {
+                System.Console.WriteLine("We did not sent the offer");
+            }
+
+            System.Console.WriteLine(offer.City);
+            System.Console.WriteLine($"Owner detail is {ownerDetails.FullName}.");
+            System.Console.WriteLine($"Seller detail is {sellerDetails.FullName}.");
         }
     }
 }
