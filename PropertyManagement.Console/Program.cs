@@ -1,4 +1,5 @@
-﻿using PropertyManagement.BLL.Entities;
+﻿using PropertyManagement.BLL.Dtos;
+using PropertyManagement.BLL.Entities;
 using PropertyManagement.BLL.Services;
 using System;
 
@@ -66,6 +67,29 @@ namespace PropertyManagement.Console
             System.Console.WriteLine(offer.City);
             System.Console.WriteLine($"Owner detail is {ownerDetails.FullName}.");
             System.Console.WriteLine($"Seller detail is {sellerDetails.FullName}.");
+
+
+            var bidDto = new BidDto();
+            bidDto.OfferedPrice = 700000;
+
+            bidDto.Bidder = new UserDetailsDto();
+            bidDto.Bidder.Email = "kowalski@gmail.com";
+            bidDto.Bidder.FullName = "Jan Kowalski";
+            bidDto.Bidder.Role = Role.UNDEFINED;
+
+            bidDto.Offer = new GratkaOfferDto();
+            bidDto.Offer.City = "Gdansk";
+            bidDto.Offer.Price = 650000;
+            bidDto.Offer.StreetName = "Warszawska";
+            bidDto.Offer.StreetNumber = "22";
+
+
+            var bidService = new BidService();
+            var clientOffer =  bidService.GetOffer(bidDto);
+
+            System.Console.WriteLine($"Dom na sprzedaz jest w miescie {clientOffer.House.Address.City}");
+
+
         }
     }
 }
