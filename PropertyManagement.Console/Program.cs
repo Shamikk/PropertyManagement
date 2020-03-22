@@ -46,7 +46,11 @@ namespace PropertyManagement.Console
             var propertyService = new PropertyService();
             var property = propertyService.CreateProperty(owner, seller, house, address);
 
-            System.Console.WriteLine(property.Address.City);
+            var gradkaService = new GratkaService();
+            var offer = gradkaService.CreateOffer(property);
+            System.Console.WriteLine(offer.City);
+
+            gradkaService.Send(offer);
         }
     }
 }

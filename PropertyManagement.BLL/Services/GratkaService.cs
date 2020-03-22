@@ -8,7 +8,22 @@ namespace PropertyManagement.BLL.Services
 {
     public class GratkaService : IGratkaOfferApi
     {
-        // create method here
+        public GratkaOfferDto CreateOffer(House house)
+        {
+            var offer = new GratkaOfferDto();
+            offer.City = house.Address.City;
+            offer.OwnerEmail = house.Owner.Email;
+            offer.OwnerFirstName = house.Owner.FirstName;
+            offer.Price = house.Price;
+            offer.StreetName = house.Address.StreetName;
+            offer.StreetNumber = house.Address.StreetNumber;
+
+            return offer;
+        }
+            
+
+          
+        
 
 
         public void Send(GratkaOfferDto offer)
